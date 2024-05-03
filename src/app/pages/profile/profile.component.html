@@ -1,0 +1,7 @@
+<form *ngIf="editObj">
+  <h1>Edit Information</h1>
+  <input type="text" name="name" [(ngModel)]="editObj.name" placeholder="Name">
+  <input type="email" name="email" [(ngModel)]="editObj.email" placeholder="Email">
+  <input type="password" name="password" [(ngModel)]="editObj.password" placeholder="Password">
+  <button (click)="onEdit()">Update</button>
+</form>

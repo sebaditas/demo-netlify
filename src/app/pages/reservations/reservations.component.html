@@ -1,0 +1,12 @@
+<div *ngIf="reservations.length > 0; else noReservations">
+  <h2>Mis Reservas</h2>
+  <ul>
+    <div *ngFor="let reservation of reservations">
+      <p>Reserva ID: {{reservation.id}}</p>
+      <p>Nombre: {{reservation.name}}</p>
+    </div>
+  </ul>
+</div>
+<ng-template #noReservations>
+  <p>No tienes ninguna reserva.</p>
+</ng-template>

@@ -1,0 +1,20 @@
+<header class="wrapper row">
+  <!-- Logo image -->
+  <p class="bold">D'Taquito</p>
+  <form class="d-flex">
+    <span class="text-white">{{loggedUser?.email}} </span>
+    <button *ngIf="loggedUser" class="btn btn-primary" type="button" (click)="onLogoff()">LogOff</button>
+    <button *ngIf="!loggedUser" class="btn btn-primary" type="button" (click)="onLogin()">Login</button>
+    <button *ngIf="loggedUser" (click)="onEditProfile()">Edit Profile</button>
+    <!-- header.component.html -->
+    <button *ngIf="loggedUser && loggedUser?.role !== 'P'" routerLink="/reservations">Ver Reservas</button>
+  </form>
+  <!-- Navigation -->
+  <div class="row gap-1">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/about-us" routerLinkActive="active">About</a>
+  </div>
+
+</header>
+
+
