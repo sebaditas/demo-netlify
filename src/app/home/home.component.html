@@ -9,17 +9,25 @@
     class="add-product-btn"
     *ngIf="loggedUser && loggedUser?.role !== 'R'"
   ></button>
+  <select [(ngModel)]="searchOrSortOption" (ngModelChange)="searchOrSort()">
+    <option value="search">Buscar por nombre</option>
+    <option value="priceHigh">Precio: Mayor a Menor</option>
+    <option value="priceLow">Precio: Menor a Mayor</option>
+  </select>
+
+  <!-- Este campo de entrada solo se mostrará cuando 'searchOrSortOption' sea 'search' -->
+  <input *ngIf="searchOrSortOption === 'search'" [(ngModel)]="searchTerm" placeholder="Escribe el nombre aquí">
 
   <!-- Products Section -->
   <div class="row wrap gap-2 space-between">
     <app-product
-      *ngFor="let product of products"
+      *ngFor="let product of filterProducts()"
       [product]="product"
       (edit)="toggleEditPopup($event)"
       (delete)="toggleDeletePopup($event)"
     ></app-product>
-  </div>
 
+  </div>
   <!-- Paginator -->
   <p-paginator
     [rows]="rows"
@@ -37,7 +45,6 @@
   (confirm)="onConfirmEdit($event)"
   header="Edit Product"
 ></app-edit-popup>
-
 <!-- Add Product -->
 <app-edit-popup
   [(display)]="displayAddPopup"

@@ -3,6 +3,65 @@
   bottom: 20px;
   right: 20px;
   z-index: 10;
-
   box-shadow: 0 0 10px 2.5px rgba(0, 0, 0, 0.2);
 }
+
+input,
+select {
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background: papayawhip;
+}
+
+select {
+  border: 2px solid;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+select:focus {
+  border-color: #512da8;
+  outline: none;
+}
+
+option {
+  padding: 10px;
+  background: antiquewhite;
+  color: #333;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+/* Media query for screens up to 600px wide (mobile devices) */
+@media (max-width: 600px) {
+  .add-product-btn {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  input,
+  select {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  /* Adjust width of the select element for smaller screens */
+  select {
+    width: 100%;
+  }
+
+  /* Make buttons, inputs, and selects take full width on smaller screens */
+  .add-product-btn,
+  input,
+  select {
+    width: calc(100% - 20px);
+    margin: 5px 10px;
+  }
+}
+

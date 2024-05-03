@@ -7,6 +7,8 @@ import { Paginator, PaginatorModule } from 'primeng/paginator';
 import { EditPopupComponent } from '../components/edit-popup/edit-popup.component';
 import { ButtonModule } from 'primeng/button';
 import {HttpClient, HttpParams} from "@angular/common/http";
+import {SortPipe} from "../pipes/sort.pipe";
+import {FilterPipe} from "../pipes/filter.pipe";
 
 @Component({
   selector: 'app-home',
@@ -17,19 +19,24 @@ import {HttpClient, HttpParams} from "@angular/common/http";
     PaginatorModule,
     EditPopupComponent,
     ButtonModule,
+    SortPipe,
+    FilterPipe
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  constructor(private productsService: ProductsService, private http: HttpClient) {}
+  constructor(private productsService: ProductsService, private http: HttpClient) {
+    this.searchOrSortOption = '';
+  }
 
   @ViewChild('paginator') paginator: Paginator | undefined;
-
+  searchOrSortOption: string; // Add this line
   products: Product[] = [];
   loggedUser: any;
   totalRecords: number = 0;
   rows: number = 12;
+  searchTerm: string = '';
 
   displayEditPopup: boolean = false;
   displayAddPopup: boolean = false;
@@ -43,10 +50,18 @@ export class HomeComponent implements OnInit {
     if (!product.id) {
       return;
     }
+    const id = product.id.toString(); // Convert to string
 
-    this.deleteProduct(product.id);
+    this.deleteProduct(id);
   }
 
+  filterProducts() {
+    if (this.searchTerm) {
+      return this.products.filter(product => product.name.includes(this.searchTerm));
+    } else {
+      return this.products;
+    }
+  }
 
   toggleAddPopup() {
     this.displayAddPopup = true;
@@ -55,29 +70,46 @@ export class HomeComponent implements OnInit {
   selectedProduct: Product = {
     id: 0,
     name: '',
-    image: '',
-    price: '',
+    image: new File([], ''),
+    price: 0,
     rating: 0,
     description: '',
-    ownerId: ''
+    ownerId: '',
+    schedule: [],
+    date: null, // Add this line
+    timeRange: '',
+    status: false
   };
+  resetFormAndSelectedProduct() {
+    this.selectedProduct = {
+      id: 0,
+      name: '',
+      image: new File([], ''),
+      price: 0,
+      rating: 0,
+      description: '',
+      ownerId: '',
+      schedule: [],
+      date: null, // Add this line
+      timeRange: '',
+      status: false
+    };
+  }
 
   onConfirmEdit(product: Product) {
-    if (!this.selectedProduct.id) {
-      return;
+    if (product.id !== undefined && product.id !== null) {
+      this.editProduct(product);
+      this.displayEditPopup = false;
+      this.resetFormAndSelectedProduct();
+      this.fetchProducts(0, this.rows); // Refresca la lista de productos
+    } else {
+      console.log('Product id is undefined or null');
     }
-
-    this.editProduct(product, this.selectedProduct.id);
-    this.displayEditPopup = false;
   }
 
   onConfirmAdd(product: Product) {
     this.addProduct(product);
     this.displayAddPopup = false;
-  }
-
-  onProductOutput(product: Product) {
-    console.log(product, 'Output');
   }
 
   onPageChange(event: any) {
@@ -109,35 +141,45 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  editProduct(product: Product, id: number) {
-    this.productsService
-      .editProduct(`http://localhost:3000/items/${id}`, product)
-      .subscribe({
-        next: (data) => {
-          console.log(data);
-          this.fetchProducts(0, this.rows);
-          this.resetPaginator();
-        },
-        error: (error) => {
-          console.log(error);
-        },
-      });
+  editProduct(product: Product) {
+    this.http.put(`http://localhost:3000/items/${product.id}`, product).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.fetchProducts(0, this.rows);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+  searchOrSort() {
+    switch (this.searchOrSortOption) {
+      case 'search':
+        // Lógica para buscar por nombre
+        this.products = this.products.filter(product => product.name.includes(this.searchTerm));
+        break;
+      case 'priceHigh':
+        // Lógica para ordenar de mayor a menor
+        this.products = this.products.sort((a, b) => b.price - a.price);
+        break;
+      case 'priceLow':
+        // Lógica para ordenar de menor a mayor
+        this.products = this.products.sort((a, b) => a.price - b.price);
+        break;
+    }
+  }
+  deleteProduct(productId: string) {
+    this.http.delete(`http://localhost:3000/items/${productId}`).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.fetchProducts(0, this.rows);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 
-  deleteProduct(id: number) {
-    this.productsService
-      .deleteProduct(`http://localhost:3000/items/${id}`)
-      .subscribe({
-        next: (data) => {
-          console.log(data);
-          this.fetchProducts(0, this.rows);
-          this.resetPaginator();
-        },
-        error: (error) => {
-          console.log(error);
-        },
-      });
-  }
   addProduct(product: Product) {
     if (this.loggedUser?.role === 'P') {
       const loggedUser = localStorage.getItem('loggedUser');
@@ -145,15 +187,19 @@ export class HomeComponent implements OnInit {
         const ownerId = JSON.parse(loggedUser).id;
         console.log('ownerId in addProduct:', ownerId);
 
-        // No incluir el id en productWithOwnerId
         const { id, ...productWithoutId } = product;
-        const productWithOwnerId = { ...productWithoutId, ownerId };
-        console.log('productWithOwnerId in addProduct:', productWithOwnerId);
+        const productWithOwnerId = { ...productWithoutId, ownerId, status: true }; // Set status to true
+
+        // Verifica que el producto incluya el campo schedule
+        if (!productWithOwnerId.schedule) {
+          console.error('Debes incluir un horario para el producto.');
+          return;
+        }
 
         this.http.post(`http://localhost:3000/items`, productWithOwnerId).subscribe({
           next: (data) => {
             console.log(data);
-            this.fetchProducts(0, this.rows);  // Aquí estás actualizando la lista de productos
+            this.fetchProducts(0, this.rows);
             this.resetPaginator();
           },
           error: (error) => {
@@ -165,6 +211,7 @@ export class HomeComponent implements OnInit {
       console.log('El usuario no tiene permiso para agregar productos');
     }
   }
+
   ngOnInit() {
     this.fetchProducts(0, this.rows);
 

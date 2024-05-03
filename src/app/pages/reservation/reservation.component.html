@@ -1,8 +1,28 @@
 <!-- tf/src/app/pages/reservation/reservation.component.html -->
-<div *ngIf="product">
-  <h1>{{ product.name }}</h1>
+<div *ngIf="product" [formGroup]="reservationForm">
+  <p>{{ "Name: " + product.name }}</p>
   <img [src]="product.image" alt="{{ product.name }}">
-  <p>{{ product.price }}</p>
-  <button (click)="onReserve()">Reservar</button>
+  <p>{{ "Price: " + product.price }}</p>
+  <p>{{"Description: " + product.description }}</p>
+
+  <!-- Selector de fecha -->
+  <div class="form-group">
+    <label for="date">Fecha</label>
+    <select id="date" formControlName="date" class="form-control">
+      <ng-container *ngFor="let date of availableDates">
+        <option [value]="date" *ngIf="date">{{ date }}</option>
+      </ng-container>
+    </select>
+  </div>
+
+  <!-- Selector de rango de tiempo -->
+  <div class="form-group">
+    <label for="timeRange">Horario</label>
+    <select id="timeRange" formControlName="timeRange" class="form-control">
+      <option *ngFor="let time of availableTimeRanges | availableTimes:userReservations:loggedUser.id" [value]="time">{{ time }}</option>
+    </select>
+  </div>
+
+  <button (click)="onReserve()" [disabled]="product.status">Reservar</button>
   <button (click)="onCancel()">Cancelar</button>
 </div>

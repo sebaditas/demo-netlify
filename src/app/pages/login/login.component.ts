@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {FormsModule} from "@angular/forms";
 import {NgClass, NgIf} from "@angular/common";
-import {HeaderComponent} from "../../layout/header/header.component";
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -18,14 +17,11 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class LoginComponent implements OnInit {
 
-
   loggedUser: any;
   isSignDivVisiable: boolean  = true;
   signUpObj: SignUpModel  = new SignUpModel();
   loginObj: LoginModel  = new LoginModel();
   editObj: SignUpModel = new SignUpModel();
-  isLoggedIn: boolean = false;
-
 
   constructor(private router: Router) {}
 
@@ -55,14 +51,6 @@ export class LoginComponent implements OnInit {
     alert('Registration Success')
   }
 
-  checkUser() {
-    const localUser = localStorage.getItem('loggedUser');
-    if(localUser != null) {
-      this.loggedUser = JSON.parse(localUser);
-    } else {
-      this.loggedUser = null;
-    }
-  }
   onLogin() {
     const localUsers =  localStorage.getItem('angular17users');
     if(localUsers != null) {
@@ -92,7 +80,7 @@ export class LoginComponent implements OnInit {
       const users = JSON.parse(localUsers);
 
       const userIndex = users.findIndex((user: SignUpModel) => user.email == this.editObj.email);
-      if(userIndex != -1) {
+      if (userIndex != -1) {
         users[userIndex] = this.editObj;
         localStorage.setItem('angular17users', JSON.stringify(users));
         localStorage.setItem('loggedUser', JSON.stringify(this.editObj));
@@ -102,20 +90,17 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-  onLogoff() {
-    this.loggedUser = null;
-  }
 }
 
 export class SignUpModel  {
-  id: string; // Agrega este campo
+  id: string;
   name: string;
   email: string;
   password: string;
   role: string;
 
   constructor() {
-    this.id = uuidv4(); // Genera un ID único
+    this.id = uuidv4();
     this.email = "";
     this.name = "";
     this.password= "";
@@ -126,11 +111,11 @@ export class SignUpModel  {
 export class LoginModel  {
   email: string;
   password: string;
-  role: string; // Agrega este campo
+  role: string;
 
   constructor() {
     this.email = "";
     this.password= "";
-    this.role = ""; // Inicializa el campo
+    this.role = "";
   }
 }

@@ -1,23 +1,35 @@
 const express = require("express");
 const fs = require("fs");
 const cors = require("cors");
-
+const path = require('path');
 const app = express();
 const port = 3000;
 
 // Cors configuration - Allows requests from localhost:4200
 const corsOptions = {
-  origin: "http://localhost:4200",
+  origin: "http://dtaquito-front-web.netlify.app/",
   optionsSuccessStatus: 204,
   methods: "GET, POST, PUT, DELETE",
 };
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './uploads');
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
+
+const multer = require('multer');
+
+const upload = multer({ storage: storage });
 
 // Use cors middleware
 app.use(cors(corsOptions));
 
 // Use express.json() middleware to parse JSON bodies of requests
 app.use(express.json());
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // GET route - Allows to get all the items
 // example: localhost:3000/clothes?page=0&perPage=2
 app.get("/items", (req, res) => {
@@ -160,6 +172,13 @@ app.post("/reservations", (req, res) => {
     });
   });
 });
+
+app.post('/upload', upload.single('image'), (req, res) => {
+  // req.file es el `image` file
+  // req.body contendrá los campos de texto, si los hubiera
+  res.status(201).json({ imageUrl: `http://localhost:3000/uploads/${req.file.filename}` });
+});
+
 
 // PUT route - Allows to update an item
 app.put("/items/:id", (req, res) => {

@@ -17,37 +17,55 @@
       <input type="text" formControlName="price" />
     </div>
 
-    <!-- Image -->
+    <div class="form-group" [formGroup]="productForm">
+      <label for="description">Descripción</label>
+      <input type="text" class="form-control" id="description" formControlName="description" required>
+    </div>
+
+    <!-- Image URL -->
     <div class="row gap-05">
-      <span class="price-label">Image:</span>
+      <span class="price-label">Image URL:</span>
       <input type="text" formControlName="image" />
     </div>
 
-    <!-- Rating -->
+    <!-- Selector de fecha -->
+    <div class="row gap-05" *ngIf="!product.status">
+      <span class="price-label">Fecha:</span>
+      <input type="date" formControlName="date" class="form-control">
+    </div>
+
+    <!-- Selector de rango de tiempo -->
+    <div class="row gap-05" *ngIf="!product.status">
+      <span class="price-label">Horario:</span>
+      <input type="time" formControlName="timeRange" class="form-control">
+    </div>
+
+
     <p-rating
       formControlName="rating"
       [readonly]="false"
       iconCancelClass="hidden"
       class="rating"
     ></p-rating>
-  </div>
 
-  <!-- Footer with action buttons -->
-  <p-footer>
-    <button
-      type="button"
-      pButton
-      icon="pi pi-check"
-      (click)="onConfirm()"
-      label="Confirm"
-      [class.disabled]="!productForm.valid"
-    ></button>
-    <button
-      type="button"
-      pButton
-      icon="pi pi-times"
-      (click)="onCancel()"
-      label="Cancel"
-    ></button>
-  </p-footer>
+    <!-- Footer with action buttons -->
+    <p-footer>
+      <button
+        type="button"
+        pButton
+        icon="pi pi-check"
+        (click)="onConfirm()"
+        label="Confirm"
+        [class.disabled]="!productForm.valid"
+      ></button>
+      <button
+        type="button"
+        pButton
+        icon="pi pi-times"
+        (click)="onCancel()"
+        label="Cancel"
+      ></button>
+
+    </p-footer>
+  </div>
 </p-dialog>

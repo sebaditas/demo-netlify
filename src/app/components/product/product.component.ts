@@ -59,14 +59,6 @@ export class ProductComponent implements OnInit {
   @Output() add: EventEmitter<Product> = new EventEmitter<Product>();
   @Output() reserve: EventEmitter<Product> = new EventEmitter<Product>(); // Nuevo evento de salida para reservas
 
-  addProduct() {
-    if (this.product && this.loggedUser && this.loggedUser.role === 'P') {
-      this.product.ownerId = this.loggedUser.id;
-      this.add.emit(this.product);
-    } else {
-      console.log('El usuario no tiene permiso para agregar productos');
-    }
-  }
 
   editProduct() {
     this.edit.emit(this.product);

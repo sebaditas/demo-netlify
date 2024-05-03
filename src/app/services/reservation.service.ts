@@ -30,4 +30,7 @@ export class ReservationService {
         map(reservations => reservations.filter(reservation => reservation.rentorId === userId))
       );
   }
+  deleteReservation(reservationId: string): Observable<void> {
+    return this.http.delete<void>(`http://localhost:3000/reservations/${reservationId}`);
+  }
 }

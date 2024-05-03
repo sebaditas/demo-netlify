@@ -1,0 +1,92 @@
+/* Estilos generales para la página */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+  display: flex; /* Usa flexbox para centrar los elementos */
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center; /* Centra los elementos verticalmente */
+}
+
+/* Estilos para el contenedor de las reservas */
+.reservations-container {
+  max-width: 800px; /* Limita el ancho para legibilidad */
+  width: 100%; /* Ocupa el 100% del contenedor */
+  padding: 20px; /* Añade padding alrededor del contenedor */
+  background-color: #f9f9f9; /* Color de fondo claro */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilos para el título */
+.reservations-container h2 {
+  font-size: 24px; /* Tamaño de fuente para el título */
+  color: #333; /* Color oscuro del texto */
+  margin-bottom: 15px; /* Espacio debajo del título */
+  text-align: center; /* Centra el título */
+}
+
+/* Estilos para la lista */
+.reservations-container ul {
+  list-style-type: none; /* Elimina el estilo de lista predeterminado */
+  padding: 0; /* Elimina el padding */
+  margin: 0; /* Elimina el margin */
+}
+
+/* Estilos para cada reserva */
+.reservations-container div {
+  padding: 10px; /* Añade padding alrededor de cada reserva */
+  border-bottom: 1px solid #ccc; /* Borde inferior claro entre reservas */
+  margin-bottom: 10px; /* Espacio entre reservas */
+  display: flex; /* Usa flexbox */
+  justify-content: space-between; /* Separa los elementos */
+  align-items: center; /* Alinea verticalmente los elementos */
+}
+
+/* Estilos para el texto */
+.reservations-container p {
+  margin: 0; /* Elimina el margin predeterminado */
+  color: #555; /* Color oscuro del texto */
+}
+
+/* Estilos para los botones */
+button {
+  padding: 8px 15px; /* Padding para los botones */
+  border: none; /* Elimina el borde predeterminado */
+  border-radius: 5px; /* Bordes redondeados */
+  background-color: #d9534f; /* Color rojo */
+  color: #fff; /* Texto blanco */
+  font-size: 14px; /* Tamaño de fuente para los botones */
+  cursor: pointer; /* Cursor tipo pointer para los botones */
+  transition: background-color 0.3s ease; /* Transición suave */
+}
+
+/* Clase para centrar el div en la página */
+.alinear {
+  display: flex; /* Usa flexbox para centrar */
+  justify-content: center; /* Centra horizontalmente */
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+}
+
+
+/* Cambios de color al interactuar con los botones */
+button:hover {
+  background-color: #c9302c; /* Color más oscuro al pasar el mouse */
+}
+
+button:active {
+  background-color: #ac2925; /* Color más oscuro al hacer clic */
+}
+
+/* Estilos responsivos */
+@media (max-width: 600px) {
+  .reservations-container {
+    padding: 15px; /* Ajusta el padding para pantallas pequeñas */
+  }
+
+  button {
+    padding: 6px 10px; /* Ajusta el padding para pantallas pequeñas */
+    font-size: 12px; /* Ajusta el tamaño de fuente */
+  }
+}
