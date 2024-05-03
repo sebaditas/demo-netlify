@@ -1,0 +1,240 @@
+{
+  "items": [
+    {
+      "id": "1c8b",
+      "name": "Mesa de billar verde",
+      "image": "https://clubdelaunion.com.pe/wp-content/uploads/2021/10/billar.jpg",
+      "price": "42",
+      "rating": 4,
+      "ownerId": "d9a51f5e-d88d-49dd-a288-f8a9fbac1ebf"
+    },
+    {
+      "id": "6ced",
+      "name": "Cancha al aire libre",
+      "image": "https://sport-12.com/wp-content/uploads/2022/02/Cancha-Chapultepec_cuadrado.jpg",
+      "price": "43",
+      "rating": 4,
+      "ownerId": "5167cc71-e8e1-4edc-9106-0259b0d44fe5"
+    },
+    {
+      "id": "5c19",
+      "name": "Billar morado",
+      "image": "https://decofilia.com/wp-content/uploads/2015/07/sala-billar-en-casa-01.jpg",
+      "price": "43",
+      "rating": 3,
+      "ownerId": "08a9607d-5a1f-4b47-b7ed-6f75c2679ce7"
+    },
+    {
+      "id": "c68b",
+      "name": "Mesa de billar",
+      "image": "https://poolmania.es/recursos/gestor/blog/10%20salas.jpg",
+      "price": "56",
+      "rating": 4,
+      "ownerId": "042ca49f-fd4a-4428-a252-f00ff0d088f3"
+    },
+    {
+      "id": "553f",
+      "name": "Billar celeste",
+      "image": "https://r.btcdn.co/22988/medium/766569-IMG_5805.JPG?1658008884",
+      "price": "31",
+      "rating": 4,
+      "description": "",
+      "ownerId": "6f03d8a6-bd8c-4983-936e-28bfdca28dbf"
+    },
+    {
+      "id": "51b2",
+      "name": "Billar compartido",
+      "image": "https://media-cdn.tripadvisor.com/media/photo-s/06/fa/e5/f3/subsuelo-salon-de-billar.jpg",
+      "price": "43",
+      "rating": 4,
+      "description": "",
+      "ownerId": "33dfeb07-a57e-44a7-af8a-15d686fb1d29"
+    },
+    {
+      "id": "14f8",
+      "name": "Cancha grande",
+      "image": "https://sportfield.com.mx/wp-content/uploads/2019/08/Brio-885x500.jpg",
+      "price": "14",
+      "rating": 3,
+      "description": "hombre",
+      "ownerId": "52213211-f241-4840-aacd-c194c353f4a4",
+      "schedule": []
+    },
+    {
+      "id": "1ae0",
+      "name": "Cancha larga verde",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRruSh-Ix2Lv4lNxvwRZZ2U8UKjmOiuew_gF-UHNAIwsw&s",
+      "price": "12",
+      "rating": 3,
+      "description": "aaaaaaaa",
+      "ownerId": "52213211-f241-4840-aacd-c194c353f4a4",
+      "schedule": [],
+      "date": null,
+      "timeRange": ""
+    },
+    {
+      "id": "b0da",
+      "name": "Cancha",
+      "image": "https://img.freepik.com/vector-gratis/campo-futbol-verde_225004-1137.jpg?size=626&ext=jpg&ga=GA1.1.1687694167.1714608000&semt=ais",
+      "price": "10",
+      "rating": 4,
+      "description": "rrrrr",
+      "ownerId": "042ca49f-fd4a-4428-a252-f00ff0d088f3",
+      "schedule": [],
+      "date": "2024-05-10T00:00:00.000Z",
+      "timeRange": "16:00"
+    },
+    {
+      "id": "4e08",
+      "name": "Canchita de futbol",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKLuLFRD4FjwNQUrfFtQ7Bz5a-mSOEkyU4pCXa1eIycA&s",
+      "price": "19",
+      "rating": 5,
+      "description": "qqqq",
+      "ownerId": "52213211-f241-4840-aacd-c194c353f4a4",
+      "schedule": [],
+      "date": "2024-06-23T00:00:00.000Z",
+      "timeRange": "17:00"
+    },
+    {
+      "id": "8440",
+      "name": "Patio de escuela de futbol",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxulWCkZ00UNzVJYU3oxEug79FiqGD8gqRZ6CVBDYebQ&s",
+      "price": "09",
+      "rating": 4,
+      "description": "nnnnn",
+      "ownerId": "52213211-f241-4840-aacd-c194c353f4a4",
+      "schedule": [],
+      "date": "2024-06-28T00:00:00.000Z",
+      "timeRange": "12:00"
+    },
+    {
+      "id": "7c68",
+      "name": "Cancha horizontal",
+      "image": "https://static.vecteezy.com/system/resources/thumbnails/000/104/368/small_2x/free-soccer-field-vector.jpg",
+      "price": "87",
+      "rating": 4,
+      "description": "vvvv",
+      "ownerId": "52213211-f241-4840-aacd-c194c353f4a4",
+      "schedule": [],
+      "date": "2024-06-25T00:00:00.000Z",
+      "timeRange": "11:00",
+      "status": true
+    },
+    {
+      "id": "e710",
+      "name": "Azul naranja",
+      "image": "https://es.snapsports.com/wp-content/uploads/2020/06/duracourt-azul-naranja.jpg",
+      "price": "120",
+      "rating": 4,
+      "description": "",
+      "ownerId": "515eca70-37f3-45d1-b490-64680526b14e",
+      "schedule": [],
+      "date": "2024-05-23T00:00:00.000Z",
+      "timeRange": "19:00",
+      "status": true
+    }
+  ],
+  "reservations": [
+    {
+      "id": "8808",
+      "product": {
+        "id": "5c19",
+        "name": "Cancha pequeña",
+        "image": "https://www.musco.com/wp-content/uploads/2019/03/f7_1200x600-1024x512.jpg",
+        "price": "43",
+        "rating": 3,
+        "ownerId": "08a9607d-5a1f-4b47-b7ed-6f75c2679ce7"
+      },
+      "rentorId": "8a2d6960-db36-42a3-bc7f-7920c7de7f7b"
+    },
+    {
+      "id": "435c",
+      "product": {
+        "id": "1c8b",
+        "name": "Billar en casa",
+        "image": "https://decofilia.com/wp-content/uploads/2015/07/sala-billar-en-casa-01.jpg",
+        "price": "42",
+        "rating": 4,
+        "ownerId": "d9a51f5e-d88d-49dd-a288-f8a9fbac1ebf"
+      },
+      "rentorId": "f7ca1d13-ebbf-4bfe-87c0-3978ce38c839"
+    },
+    {
+      "id": "93d0",
+      "product": {
+        "id": "553f",
+        "name": "Cancha Celeste",
+        "image": "https://www.circulomilitardelperu.com/img/Sedess/Chorrillos/Areas%20Deportivas/Futbol/2.jpg",
+        "price": "31",
+        "rating": 4,
+        "description": "",
+        "ownerId": "6f03d8a6-bd8c-4983-936e-28bfdca28dbf"
+      },
+      "rentorId": "f7ca1d13-ebbf-4bfe-87c0-3978ce38c839"
+    },
+    {
+      "id": "9b72",
+      "product": {
+        "id": "553f",
+        "name": "Cancha Celeste",
+        "image": "https://sport-12.com/wp-content/uploads/2022/02/Cancha-Chapultepec_cuadrado.jpg",
+        "price": "31",
+        "rating": 4,
+        "description": "",
+        "ownerId": "6f03d8a6-bd8c-4983-936e-28bfdca28dbf"
+      },
+      "rentorId": "31e3e6ec-848e-479a-b9b7-4c6cb4ee3bd7"
+    },
+    {
+      "id": "14cb",
+      "product": {
+        "id": "Cancha azul",
+        "name": "sss",
+        "image": "https://www.shutterstock.com/image-photo/blue-tennis-courts-white-lines-600nw-2159421723.jpg",
+        "price": "15",
+        "rating": 4,
+        "description": "fffff",
+        "ownerId": "042ca49f-fd4a-4428-a252-f00ff0d088f3",
+        "schedule": [
+          "01:00"
+        ]
+      },
+      "rentorId": "5d5310c2-d252-4dec-b7f5-ae1042c4121c"
+    },
+    {
+      "id": "dfa8",
+      "product": {
+        "id": "b0da",
+        "name": "Cancha",
+        "image": "https://img.freepik.com/vector-gratis/campo-futbol-verde_225004-1137.jpg?size=626&ext=jpg&ga=GA1.1.1687694167.1714608000&semt=ais",
+        "price": "10",
+        "rating": 4,
+        "description": "rrrrr",
+        "ownerId": "042ca49f-fd4a-4428-a252-f00ff0d088f3",
+        "schedule": [],
+        "date": "2024-05-10T00:00:00.000Z",
+        "timeRange": "16:00",
+        "status": true
+      },
+      "rentorId": "5d96474f-3b08-4bf2-aaf9-8e9475b7a328"
+    },
+    {
+      "id": "308f",
+      "product": {
+        "id": "b0da",
+        "name": "Cancha",
+        "image": "https://img.freepik.com/vector-gratis/campo-futbol-verde_225004-1137.jpg?size=626&ext=jpg&ga=GA1.1.1687694167.1714608000&semt=ais",
+        "price": "10",
+        "rating": 4,
+        "description": "rrrrr",
+        "ownerId": "042ca49f-fd4a-4428-a252-f00ff0d088f3",
+        "schedule": [],
+        "date": "2024-05-10T00:00:00.000Z",
+        "timeRange": "16:00",
+        "status": true
+      },
+      "rentorId": "4b2feae6-b242-4a3b-a104-b6df5bd284d5"
+    }
+  ]
+}
